@@ -1562,16 +1562,20 @@
     <!-- Song Controls -->
     <div class="lyrics-controls">
       <div class="song-control">
-        <button class="lyrics-btn lyrics-btn-song" onclick="playLyrics(0)">Nothing's Gonna Hurt You Baby</button>
+        <button class="lyrics-btn lyrics-btn-song" onclick="playLyrics(0)">Loco (Tu Forma De Ser)</button>
         <button class="play-btn" id="playBtn-0" onclick="togglePlayButton(0)" disabled>▶</button>
       </div>
       <div class="song-control">
-        <button class="lyrics-btn lyrics-btn-song" onclick="playLyrics(1)">My Kind Of Woman</button>
+        <button class="lyrics-btn lyrics-btn-song" onclick="playLyrics(1)">Nothing's Gonna Hurt You Baby</button>
         <button class="play-btn" id="playBtn-1" onclick="togglePlayButton(1)" disabled>▶</button>
       </div>
       <div class="song-control">
-        <button class="lyrics-btn lyrics-btn-song" onclick="playLyrics(2)">San Lucas</button>
+        <button class="lyrics-btn lyrics-btn-song" onclick="playLyrics(2)">My Kind Of Woman</button>
         <button class="play-btn" id="playBtn-2" onclick="togglePlayButton(2)" disabled>▶</button>
+      </div>
+      <div class="song-control">
+        <button class="lyrics-btn lyrics-btn-song" onclick="playLyrics(3)">San Lucas</button>
+        <button class="play-btn" id="playBtn-3" onclick="togglePlayButton(3)" disabled>▶</button>
       </div>
     </div>
 
@@ -1582,12 +1586,15 @@
 
     <!-- Hidden Audio Elements -->
     <audio id="audio-0" class="song-audio">
-      <source src="./Nothing's Gonna Hurt You Baby - Cigarettes After Sex.mp3" type="audio/mpeg">
+      <source src="./Los Auténticos Decadentes - Loco (Tu Forma De Ser) (Official Audio).mp3" type="audio/mpeg">
     </audio>
     <audio id="audio-1" class="song-audio">
-      <source src="./Mac DeMarco  My Kind Of Woman.mp3" type="audio/mpeg">
+      <source src="./Nothing's Gonna Hurt You Baby - Cigarettes After Sex.mp3" type="audio/mpeg">
     </audio>
     <audio id="audio-2" class="song-audio">
+      <source src="./Mac DeMarco  My Kind Of Woman.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="audio-3" class="song-audio">
       <source src="./Kevin Kaarl - San Lucas (Video oficial).mp3" type="audio/mpeg">
     </audio>
   </div>
@@ -1742,6 +1749,48 @@ function timeToSeconds(timeStr) {
 }
 
 const songs = [
+  {
+    title: "Loco (Tu Forma De Ser)",
+    artist: "Los Auténticos Decadentes",
+    srt: [
+      { start: "00:00:36,095", end: "00:00:40,805", text: "Te vi llegar del brazo de un amigo" },
+      { start: "00:00:40,805", end: "00:00:44,550", text: "Cuando entraste al bar y te caíste al piso" },
+      { start: "00:00:44,550", end: "00:00:48,771", text: "Me tiraste el pingüino, me tiraste el sifón" },
+      { start: "00:00:48,771", end: "00:00:53,461", text: "Estallaron los vidrios de mi corazón" },
+      { start: "00:00:53,461", end: "00:00:58,288", text: "Te vi bailar, brillando con tu ausencia" },
+      { start: "00:00:58,288", end: "00:01:01,681", text: "Sin sentir piedad, chocando con las mesas" },
+      { start: "00:01:01,681", end: "00:01:05,678", text: "Te burlaste de todos, te reíste de mí" },
+      { start: "00:01:05,678", end: "00:01:09,598", text: "Tus amigos escaparon de vos" },
+      { start: "00:01:09,598", end: "00:01:13,964", text: "Y a mí me volvió loco tu forma de ser" },
+      { start: "00:01:13,964", end: "00:01:18,141", text: "A mí me vuelve loco tu forma de ser" },
+      { start: "00:01:18,141", end: "00:01:21,685", text: "Tu egoísmo y tu soledad" },
+      { start: "00:01:21,685", end: "00:01:27,460", text: "Son estrellas en la noche de la mediocridad" },
+      { start: "00:01:27,460", end: "00:01:31,100", text: "Me vuelve loco tu forma de ser" },
+      { start: "00:01:31,100", end: "00:01:36,277", text: "A mí me volvió loco tu forma de ser" },
+      { start: "00:01:36,277", end: "00:01:40,351", text: "Tu egoísmo y tu soledad" },
+      { start: "00:01:40,351", end: "00:02:18,970", text: "Son joyas en el barro de la mediocridad" },
+      { start: "00:02:18,970", end: "00:02:22,878", text: "Viniste a mí, tomaste de mi copa" },
+      { start: "00:02:22,878", end: "00:02:25,571", text: "Me sonreíste así, nadando en tu demencia" },
+      { start: "00:02:25,571", end: "00:02:29,197", text: "No sabía qué hacer, te traté de besar" },
+      { start: "00:02:29,197", end: "00:02:35,285", text: "Me pegaste un sopapo y te pusiste a llorar" },
+      { start: "00:02:35,285", end: "00:02:38,937", text: "Me vuelve loco tu forma de ser" },
+      { start: "00:02:38,937", end: "00:02:43,998", text: "A mí me volvió loco tu forma de ser" },
+      { start: "00:02:43,998", end: "00:02:48,082", text: "Tu egoísmo y tu soledad" },
+      { start: "00:02:48,082", end: "00:02:52,317", text: "Son estrellas en la noche de la mediocridad" },
+      { start: "00:02:52,317", end: "00:02:55,860", text: "Me vuelve loco tu forma de ser" },
+      { start: "00:02:55,860", end: "00:03:00,942", text: "A mí me volvió loco tu forma de ser" },
+      { start: "00:03:00,942", end: "00:03:05,218", text: "Tu egoísmo y tu soledad" },
+      { start: "00:03:05,218", end: "00:03:42,011", text: "Son joyas en el barro de la mediocridad" },
+      { start: "00:03:42,011", end: "00:03:46,650", text: "Y a mí me volvió loco tu forma de ser" },
+      { start: "00:03:46,650", end: "00:03:50,857", text: "Me vuelve loco tu forma de ser" },
+      { start: "00:03:50,857", end: "00:03:54,940", text: "Tu egoísmo y tu soledad" },
+      { start: "00:03:54,940", end: "00:03:58,974", text: "Son estrellas en la noche de la mediocridad" },
+      { start: "00:03:58,974", end: "00:04:02,511", text: "Me vuelve loco tu forma de ser" },
+      { start: "00:04:02,511", end: "00:04:07,571", text: "A mí me volvió loco tu forma de ser" },
+      { start: "00:04:07,571", end: "00:04:11,812", text: "Tu egoísmo y tu soledad" },
+      { start: "00:04:11,812", end: "00:04:16,812", text: "Son joyas en el barro de la mediocridad, hey" }
+    ]
+  },
   {
     title: "Nothing's Gonna Hurt You Baby",
     artist: "Cigarettes After Sex",
