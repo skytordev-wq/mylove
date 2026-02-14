@@ -1,0 +1,2059 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lottie💕</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #f4a7b9;
+    --blush: #fbd5e0;
+    --lavender: #e8d5f5;
+    --mint: #c8f0e8;
+    --cream: #fff9f0;
+    --peach: #ffd8c0;
+    --lilac: #d8c3f5;
+    --soft-red: #e8708a;
+    --text-dark: #5a3850;
+    --text-mid: #8a6570;
+    --text-light: #c4a0b0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* ===== FLOATING HEARTS BACKGROUND ===== */
+  .hearts-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .heart-float {
+    position: absolute;
+    opacity: 1;
+    animation: floatHeart linear infinite;
+    font-size: 1.2rem;
+  }
+
+  @keyframes floatHeart {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 1; }
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 3.5rem 2rem 2rem;
+  }
+
+  .header-decoration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .deco-line {
+    width: 80px;
+    height: 1.5px;
+    background: var(--rose);
+  }
+
+  .deco-line.right {
+    background: var(--rose);
+  }
+
+  .header-tag {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1rem;
+    color: var(--soft-red);
+    letter-spacing: 0.1em;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    color: var(--text-dark);
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+
+  h1 span {
+    font-style: italic;
+    color: var(--soft-red);
+  }
+
+  .subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    color: var(--text-mid);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+  }
+
+  /* ===== ROTATING PHOTO PANEL ===== */
+  .carousel-section {
+    position: relative;
+    z-index: 10;
+    padding: 3rem 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 700px;
+  }
+
+  .carousel-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: var(--soft-red);
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+
+  .carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1200px;
+  }
+
+  .carousel-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .carousel-slide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 320px;
+    height: 400px;
+    transform-style: preserve-3d;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    filter: drop-shadow(0 10px 30px rgb(90, 56, 80));
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .slide-text-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1.8rem;
+    box-sizing: border-box;
+    background: inherit;
+  }
+
+  .slide-text-content p {
+    color: white;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    font-weight: 500;
+    line-height: 1.85;
+    margin: 0;
+    letter-spacing: 0.2px;
+    word-spacing: 0.05em;
+  }
+
+  .slide-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to bottom, transparent 0%, rgba(90,56,80,1) 35%);
+    padding: 1.5rem 1rem 1rem;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  .carousel-slide:hover .slide-overlay { opacity: 1; }
+
+  .slide-label {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  .slide-sublabel {
+    font-size: 0.8rem;
+    opacity: 1;
+    margin-top: 2px;
+  }
+
+  /* Placeholder slides */
+  .slide-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    text-align: center;
+    padding: 1.5rem;
+    position: relative;
+  }
+
+  .placeholder-icon { font-size: 3rem; }
+
+  .placeholder-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    color: white;
+    font-weight: 500;
+    opacity: 1;
+  }
+
+  .placeholder-sub {
+    font-size: 0.75rem;
+    color: rgb(255,255,255);
+  }
+
+  /* 3D Carousel positions */
+  .carousel-slide:nth-child(1)  { --angle: 0; }
+  .carousel-slide:nth-child(2)  { --angle: 72; }
+  .carousel-slide:nth-child(3)  { --angle: 144; }
+  .carousel-slide:nth-child(4)  { --angle: 216; }
+  .carousel-slide:nth-child(5)  { --angle: 288; }
+
+  /* Carousel controls */
+  .carousel-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .carousel-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid var(--rose);
+    background: white;
+    color: var(--soft-red);
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 8px rgb(0, 0, 0));
+    min-width: 48px;
+    min-height: 48px;
+    touch-action: manipulation;
+  }
+
+  .carousel-btn:hover {
+    background: var(--rose);
+    color: white;
+    transform: scale(1.1);
+  }
+
+  .carousel-btn:active {
+    transform: scale(0.95);
+  }
+
+  @media (max-width: 768px) {
+    .carousel-btn {
+      width: 44px;
+      height: 44px;
+      font-size: 1.1rem;
+      min-width: 44px;
+      min-height: 44px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .carousel-btn {
+      width: 40px;
+      height: 40px;
+      font-size: 0.95rem;
+      min-width: 40px;
+      min-height: 40px;
+      border-width: 1.5px;
+    }
+  }
+
+  .carousel-dots {
+    display: flex;
+    gap: 8px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--blush);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .dot.active {
+    background: var(--soft-red);
+    transform: scale(1.3);
+  }
+
+  /* Upload hint */
+  .upload-hint {
+    margin-top: 1.5rem;
+    background: white;
+    border: 1.5px dashed var(--rose);
+    border-radius: 16px;
+    padding: 1rem 2rem;
+    text-align: center;
+    max-width: 400px;
+  }
+
+  .upload-hint p {
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    line-height: 1.5;
+  }
+
+  .upload-hint strong { color: var(--soft-red); }
+
+  /* ===== SECTION DIVIDER ===== */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 2rem;
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    position: relative;
+    z-index: 10;
+  }
+
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--rose);
+  }
+
+  .divider-icon { font-size: 1.2rem; }
+
+  /* ===== CONTENT SECTIONS ===== */
+  .sections-container {
+    position: relative;
+    z-index: 10;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem 5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .content-card:first-child {
+    grid-column: 1 / -1;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .content-card:first-child {
+      max-width: 100%;
+    }
+  }
+
+  .content-card {
+    background: white;
+    border-radius: 24px;
+    padding: 2rem;
+    filter: drop-shadow(0 4px 12px rgb(0, 0, 0));
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .content-card:hover {
+    transform: translateY(-6px);
+    filter: drop-shadow(0 8px 20px rgb(90, 56, 80));
+  }
+
+  .content-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    border-radius: 24px 24px 0 0;
+  }
+
+  .card-rose::before { background: linear-gradient(90deg, var(--rose), var(--blush)); }
+  .card-lavender::before { background: linear-gradient(90deg, var(--lavender), var(--lilac)); }
+  .card-mint::before { background: linear-gradient(90deg, var(--mint), #a8e6d8); }
+  .card-peach::before { background: linear-gradient(90deg, var(--peach), #ffc0a0); }
+  .card-full::before { background: linear-gradient(90deg, var(--rose), var(--lavender), var(--mint)); }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+  }
+
+  .icon-rose { background: var(--blush); }
+  .icon-lavender { background: var(--lavender); }
+  .icon-mint { background: var(--mint); }
+  .icon-peach { background: var(--peach); }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+  }
+
+  .card-subtitle {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    margin-top: 1px;
+  }
+
+  /* Editable text areas */
+  .edit-field {
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    background: transparent;
+    line-height: 1.7;
+    min-height: 100px;
+  }
+
+  .edit-field::placeholder { color: var(--text-light); font-style: italic; }
+
+  .edit-field-inline {
+    width: 100%;
+    border: none;
+    border-bottom: 1.5px dashed var(--blush);
+    outline: none;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    background: transparent;
+    padding-bottom: 4px;
+    margin-bottom: 0.75rem;
+    transition: border-color 0.3s;
+  }
+
+  .edit-field-inline:focus { border-color: var(--soft-red); }
+  .edit-field-inline::placeholder { color: var(--text-light); }
+
+  /* Checklist */
+  .checklist { list-style: none; }
+
+  .checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--blush);
+  }
+
+  .checklist-item:last-child { border-bottom: none; }
+
+  .check-box {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    border: 2px solid var(--rose);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+    font-size: 0.7rem;
+    color: white;
+  }
+
+  .check-box.checked { background: var(--soft-red); border-color: var(--soft-red); }
+
+  .check-text {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .check-text.done { text-decoration: line-through; color: var(--text-light); }
+  .check-text::placeholder { color: var(--text-light); font-style: italic; }
+
+  .add-item-btn {
+    margin-top: 1rem;
+    background: none;
+    border: 1.5px dashed var(--rose);
+    color: var(--soft-red);
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+    width: 100%;
+  }
+
+  .add-item-btn:hover { background: var(--blush); border-style: solid; }
+
+  /* Quote card */
+  .quote-display {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--text-dark);
+    line-height: 1.7;
+    text-align: center;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    position: relative;
+  }
+
+  .quote-marks {
+    font-size: 4rem;
+    color: var(--blush);
+    line-height: 0;
+    position: absolute;
+  }
+
+  .quote-marks.open { top: 1rem; left: 0.5rem; }
+  .quote-marks.close { bottom: -0.5rem; right: 0.5rem; }
+
+  .quote-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--text-dark);
+    background: transparent;
+    text-align: center;
+    line-height: 1.7;
+    min-height: 80px;
+    z-index: 1;
+    position: relative;
+  }
+
+  .quote-input::placeholder { color: var(--text-light); }
+
+  /* Full-width card */
+  .card-full-width {
+    grid-column: 1 / -1;
+  }
+
+  /* Timeline / memories list */
+  .timeline { position: relative; padding-left: 1.5rem; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--rose), var(--lavender));
+    border-radius: 2px;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 1.2rem;
+    padding-left: 1rem;
+  }
+
+  .timeline-item::before {
+    content: '♥';
+    position: absolute;
+    left: -1.35rem;
+    top: 2px;
+    font-size: 0.7rem;
+    color: var(--soft-red);
+  }
+
+  .timeline-date {
+    width: 100%;
+    border: none;
+    border-bottom: 1px dashed var(--blush);
+    outline: none;
+    font-size: 0.75rem;
+    color: var(--text-light);
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    margin-bottom: 2px;
+  }
+
+  .timeline-date::placeholder { color: var(--text-light); font-style: italic; }
+
+  .timeline-text {
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.5;
+    min-height: 40px;
+  }
+
+  .timeline-text::placeholder { color: var(--text-light); font-style: italic; }
+
+  /* Music section */
+  .music-card .song-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    border-radius: 12px;
+    background: var(--cream);
+    margin-bottom: 0.75rem;
+    transition: background 0.2s;
+  }
+
+  .music-card .song-item:hover { background: var(--blush); }
+
+  .song-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--soft-red);
+    width: 24px;
+    flex-shrink: 0;
+    text-align: center;
+  }
+
+  .song-info { flex: 1; }
+
+  .song-name, .song-artist {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    width: 100%;
+    display: block;
+  }
+
+  .song-name { font-size: 0.9rem; font-weight: 500; color: var(--text-dark); margin: 0; }
+  .song-artist { font-size: 0.78rem; color: var(--text-light); margin: 2px 0 0 0; }
+  .song-name::placeholder, .song-artist::placeholder { color: var(--text-light); font-style: italic; }
+
+  /* Audio player styling */
+  .song-audio {
+    accent-color: var(--soft-red);
+  }
+
+  .song-audio::-webkit-media-controls-panel {
+    background-color: var(--cream);
+  }
+
+  .song-play {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--rose);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    color: white;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .song-play:hover { background: var(--soft-red); transform: scale(1.1); }
+
+  /* Lyrics Section Styles */
+  .lyrics-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .song-control {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .song-control {
+      gap: 0.6rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .song-control {
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+  }
+
+  .lyrics-btn-song {
+    flex: 1;
+    padding: 0.9rem 1.5rem;
+    border: 2px solid var(--soft-red);
+    background: white;
+    color: var(--soft-red);
+    border-radius: 25px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: manipulation;
+  }
+
+  .lyrics-btn-song:hover {
+    background: var(--soft-red);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(232, 112, 138, 0.3);
+  }
+
+  .lyrics-btn-song:active {
+    transform: translateY(0);
+  }
+
+  .lyrics-btn-song.active {
+    background: var(--soft-red);
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    .lyrics-btn-song {
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+      min-height: 40px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .lyrics-btn-song {
+      padding: 0.65rem 0.8rem;
+      font-size: 0.8rem;
+      min-height: 40px;
+      border-width: 1.5px;
+    }
+  }
+
+  .play-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--soft-red);
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    font-weight: bold;
+    min-width: 50px;
+    min-height: 50px;
+  }
+
+  .play-btn:hover:not(:disabled) {
+    background: var(--rose);
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(232, 112, 138, 0.4);
+  }
+
+  .play-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  @media (max-width: 768px) {
+    .play-btn {
+      width: 45px;
+      height: 45px;
+      font-size: 1rem;
+      min-width: 45px;
+      min-height: 45px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .play-btn {
+      width: 44px;
+      height: 44px;
+      font-size: 0.9rem;
+      min-width: 44px;
+      min-height: 44px;
+    }
+  }
+
+  .lyrics-display {
+    background: linear-gradient(135deg, var(--blush) 0%, var(--lavender) 50%, var(--mint) 100%);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lyrics-display::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.15), transparent),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.15), transparent);
+    pointer-events: none;
+  }
+
+  .lyrics-content {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    line-height: 2.2;
+    color: var(--text-dark);
+    text-align: center;
+    word-spacing: 0.15em;
+    letter-spacing: 0.02em;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+    min-height: auto;
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+    padding: 0 1.5rem;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .lyrics-display {
+      padding: 2rem 1.5rem;
+      min-height: 350px;
+      border-radius: 16px;
+    }
+
+    .lyrics-content {
+      font-size: 1.15rem;
+      line-height: 2;
+      padding: 0 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .lyrics-display {
+      padding: 1.5rem 1rem;
+      min-height: 300px;
+      border-radius: 14px;
+    }
+
+    .lyrics-content {
+      font-size: 1rem;
+      line-height: 1.9;
+      padding: 0 0.75rem;
+      word-spacing: 0.08em;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Karaoke word styling */
+  .karaoke-word {
+    transition: all 0.08s ease;
+    position: relative;
+    color: var(--text-dark);
+    display: inline;
+    white-space: normal;
+    margin: 0 0.1em;
+  }
+
+  .karaoke-word.sung {
+    color: var(--soft-red);
+    font-weight: 600;
+    text-shadow: 0 0 12px rgba(232, 112, 138, 0.5);
+  }
+
+  .lyrics-placeholder {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4rem;
+    color: var(--text-dark);
+    opacity: 0.5;
+  }
+
+  .lyrics-artist {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    margin-top: 1.5rem;
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-light);
+    font-size: 0.85rem;
+  }
+
+  footer .footer-heart { 
+    color: var(--soft-red); 
+    animation: pulse 1.5s ease-in-out infinite; 
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+  }
+
+  @media (max-width: 768px) {
+    footer {
+      padding: 1.5rem 1rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    footer {
+      padding: 1rem;
+      font-size: 0.75rem;
+    }
+  }
+
+  /* ===== PETAL DECORATIONS ===== */
+  .petal {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1;
+    animation: petalFall linear infinite;
+    opacity: 1;
+  }
+
+  @keyframes petalFall {
+    0% { transform: translateY(-50px) rotate(0deg) translateX(0); opacity: 1; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(110vh) rotate(720deg) translateX(60px); opacity: 1; }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    /* Header Adjustments */
+    header { padding: 2rem 1.5rem 1.5rem; }
+    
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+    
+    .subtitle { font-size: 0.9rem; }
+    
+    .header-decoration {
+      gap: 0.75rem;
+    }
+    
+    .deco-line {
+      width: 60px;
+    }
+    
+    .header-tag {
+      font-size: 0.9rem;
+    }
+
+    /* Carousel Adjustments */
+    .carousel-section {
+      padding: 2rem 1rem 3rem;
+      min-height: auto;
+    }
+    
+    .carousel-title {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .carousel-container {
+      height: 450px;
+      max-width: 100%;
+      padding: 0 1rem;
+    }
+    
+    .carousel-slide {
+      width: 290px;
+      height: 370px;
+    }
+    
+    .slide-text-content {
+      padding: 2rem 1.5rem;
+    }
+    
+    .slide-text-content p {
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      line-height: 1.8;
+    }
+    
+    .carousel-controls {
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .carousel-btn {
+      width: 44px;
+      height: 44px;
+      font-size: 1rem;
+    }
+    
+    .upload-hint {
+      margin-top: 1rem;
+      padding: 0.8rem 1.5rem;
+      max-width: 100%;
+    }
+    
+    .upload-hint p {
+      font-size: 0.75rem;
+    }
+
+    /* Divider */
+    .divider {
+      padding: 0 1rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Sections Container */
+    .sections-container {
+      max-width: 100%;
+      padding: 0 1rem 3rem;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    /* Content Cards */
+    .content-card {
+      border-radius: 16px;
+      padding: 1.5rem;
+    }
+    
+    .card-header {
+      gap: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+    
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      font-size: 1.1rem;
+    }
+    
+    .card-title {
+      font-size: 1.05rem;
+    }
+    
+    .card-subtitle {
+      font-size: 0.7rem;
+    }
+
+    /* Editable Fields */
+    .edit-field {
+      font-size: 0.9rem;
+      min-height: 80px;
+      line-height: 1.6;
+    }
+    
+    .edit-field-inline {
+      font-size: 1rem;
+    }
+
+    /* Music Section */
+    .music-card .song-item {
+      padding: 0.6rem;
+      gap: 0.75rem;
+      margin-bottom: 0.6rem;
+    }
+    
+    .song-num {
+      font-size: 1rem;
+      width: 20px;
+    }
+    
+    .song-name {
+      font-size: 0.85rem;
+    }
+    
+    .song-artist {
+      font-size: 0.7rem;
+    }
+    
+    .song-play {
+      width: 28px;
+      height: 28px;
+      font-size: 0.6rem;
+    }
+
+    /* Lyrics Controls */
+    .lyrics-controls {
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .song-control {
+      gap: 0.6rem;
+    }
+    
+    .lyrics-btn-song {
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+      border-radius: 20px;
+    }
+    
+    .lyrics-btn {
+      padding: 0.75rem 1rem;
+      font-size: 0.8rem;
+    }
+
+    /* Lyrics Display */
+    .lyrics-content {
+      padding: 1rem;
+      min-height: 80px;
+      border-radius: 12px;
+    }
+    
+    .lyrics-line {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      padding: 0.8rem 0;
+    }
+    
+    .karaoke-word {
+      margin: 0 2px;
+    }
+    
+    .karaoke-word.sung {
+      font-size: 1.02rem;
+    }
+
+    /* Checklist */
+    .checklist-item {
+      padding: 0.5rem 0;
+      gap: 0.6rem;
+    }
+    
+    .check-box {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+    }
+    
+    .check-text {
+      font-size: 0.85rem;
+    }
+    
+    .add-item-btn {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.75rem;
+      margin-top: 0.8rem;
+    }
+
+    /* Timeline */
+    .timeline {
+      padding-left: 1.2rem;
+    }
+    
+    .timeline::before {
+      left: 5px;
+    }
+    
+    .timeline-item {
+      margin-bottom: 1rem;
+      padding-left: 0.8rem;
+    }
+    
+    .timeline-item::before {
+      left: -1.2rem;
+      font-size: 0.6rem;
+    }
+    
+    .timeline-date {
+      font-size: 0.7rem;
+    }
+    
+    .timeline-text {
+      font-size: 0.85rem;
+      min-height: 35px;
+    }
+
+    /* Quote Display */
+    .quote-display {
+      font-size: 1rem;
+      line-height: 1.6;
+      min-height: 70px;
+      padding: 0.8rem;
+    }
+    
+    .quote-marks {
+      font-size: 3rem;
+    }
+    
+    .quote-input {
+      font-size: 0.95rem;
+      min-height: 70px;
+      line-height: 1.6;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* Ultra small screens */
+    header { padding: 1.5rem 1rem 1rem; }
+    
+    h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+    
+    .subtitle { font-size: 0.8rem; }
+    
+    .deco-line { width: 50px; }
+    
+    .carousel-section { padding: 1.5rem 0.5rem 2.5rem; }
+    
+    .carousel-title { 
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .carousel-container {
+      height: 380px;
+      padding: 0 0.5rem;
+    }
+    
+    .carousel-slide {
+      width: 260px;
+      height: 340px;
+    }
+    
+    .slide-text-content {
+      padding: 2rem 1rem;
+    }
+    
+    .slide-text-content p {
+      font-size: clamp(0.85rem, 2vw, 0.95rem);
+      line-height: 1.75;
+    }
+    
+    .carousel-controls {
+      gap: 0.8rem;
+    }
+    
+    .carousel-btn {
+      width: 40px;
+      height: 40px;
+      font-size: 0.9rem;
+    }
+    
+    .upload-hint {
+      padding: 0.7rem 1.2rem;
+      margin-top: 0.8rem;
+    }
+    
+    .divider { padding: 0 0.5rem; }
+    
+    .sections-container {
+      padding: 0 0.5rem 2.5rem;
+      gap: 1.2rem;
+    }
+    
+    .content-card {
+      padding: 1.25rem;
+      border-radius: 14px;
+    }
+    
+    .card-title {
+      font-size: 0.95rem;
+    }
+    
+    .card-subtitle {
+      font-size: 0.65rem;
+    }
+    
+    .edit-field {
+      font-size: 0.85rem;
+      min-height: 70px;
+    }
+    
+    .lyrics-btn-song {
+      font-size: 0.8rem;
+      padding: 0.65rem 0.8rem;
+    }
+    
+    .lyrics-line {
+      font-size: 0.9rem;
+      padding: 0.6rem 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Floating hearts -->
+<div class="hearts-bg" id="heartsContainer"></div>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="header-decoration">
+    <div class="deco-line"></div>
+    <span class="header-tag">✦ Lottie ✦</span>
+    <div class="deco-line right"></div>
+  </div>
+  <h1>Con todo mi <span>amor</span></h1>
+  <p class="subtitle">hecha especialmente para ti con mucho trabajo y amor</p>
+</header>
+
+<!-- ===== CAROUSEL ===== -->
+<section class="carousel-section">
+  <h2 class="carousel-title">TE AMO MI VIDA ✨</h2>
+
+  <div class="carousel-container" id="carousel3D">
+    <div class="carousel-track" id="carouselTrack">
+
+      <!-- Slide 1 - Imagen 1 -->
+      <div class="carousel-slide" id="slide-0" style="background: linear-gradient(135deg, #fbd5e0, #f4a7b9);">
+        <div class="slide-text-content">
+          <p>Baby, I promise<br>There's nobody new<br>I'm being honest<br>There is no one like you<br>There's no one like you</p>
+        </div>
+      </div>
+
+      <!-- Slide 2 - Imagen 2 -->
+      <div class="carousel-slide" id="slide-1" style="background: linear-gradient(135deg, #e8d5f5, #d8c3f5);">
+        <div class="slide-text-content">
+          <p>Sos el paisaje más soñado<br>Y sacudiste las más sólidas tristezas<br>Y respondiste cada vez que te he llamado<br>Vamos despacio<br>Para encontrarnos</p>
+        </div>
+      </div>
+
+      <!-- Slide 3 - Imagen 3 -->
+      <div class="carousel-slide" id="slide-2" style="background: linear-gradient(135deg, #c8f0e8, #a8e6d8);">
+        <div class="slide-text-content">
+          <p>Tú eres lo que siempre yo soñé<br>My love, my one and only love<br>There's no reason<br>Not to love you like I love you<br>Reason</p>
+        </div>
+      </div>
+
+      <!-- Slide 4 - Imagen 5 -->
+      <div class="carousel-slide" id="slide-3" style="background: linear-gradient(135deg, #ffd8c0, #ffc0a0);">
+        <div class="slide-text-content">
+          <p>Te conozco de otra vida<br>Hoy saldrás por la ventana<br>Como un puñal<br>Rasgando las tinieblas<br>Si te llevo<br>Es para que me lleves, oh-uh-oh</p>
+        </div>
+      </div>
+
+      <!-- Slide 5 - Imagen 6 -->
+      <div class="carousel-slide" id="slide-4" style="background: linear-gradient(135deg, #fff4c4, #ffd89b);">
+        <div class="slide-text-content">
+          <p>Veo tantos colores y todos mis sentidos<br>Estallarán de tanto amarte<br>¿Cómo se puede sentir<br>Tantas cosas en tan poco tiempo, y no morir?</p>
+        </div>
+      </div>
+
+      <!-- Slide 6 - Imagen 7 -->
+      <div class="carousel-slide" id="slide-5" style="background: linear-gradient(135deg, #d8f5e8, #b8efe0);">
+        <div class="slide-text-content">
+          <p>Tanto te quiero<br>Tan tuyo, en tus vidas pasadas<br>Se acababa el mundo y tú<br>Amado mío<br>Tú, solo siendo tú<br>Amado mío</p>
+        </div>
+      </div>
+
+      <!-- Slide 7 - Imagen 8 -->
+      <div class="carousel-slide" id="slide-6" style="background: linear-gradient(135deg, #e8c8f5, #d8a8f0);">
+        <div class="slide-text-content">
+          <p>Ya me transformo en agua<br>Solo por subir al cielo y volver<br>A caer en tus ojos<br>Lo haría una y otra vez<br>Por este sol<br>Quemaría mis días<br>Por este sol<br>Te entrego toda mi vida<br>Bastará solo con verte</p>
+        </div>
+      </div>
+
+      <!-- Slide 8 - Imagen 11 -->
+      <div class="carousel-slide" id="slide-7" style="background: linear-gradient(135deg, #ffc0e0, #ffb3d7);">
+        <div class="slide-text-content">
+          <p>Que tengo miedo a perderte, perderte después<br>Quiero tenerte muy cerca<br>Mirarme en tus ojos, verte junto a mí</p>
+        </div>
+      </div>
+
+      <!-- Slide 9 - Imagen 12 -->
+      <div class="carousel-slide" id="slide-8" style="background: linear-gradient(135deg, #c8e6f5, #a8e0f0);">
+        <div class="slide-text-content">
+          <p>You said you can't change your haircut<br>But it looks good anyway<br>I kinda wonder where you got it<br>And I doubt you even paid</p>
+        </div>
+      </div>
+
+      <!-- Slide 10 - Imagen 13 -->
+      <div class="carousel-slide" id="slide-9" style="background: linear-gradient(135deg, #f5e8c8, #f5dbb3);">
+        <div class="slide-text-content">
+          <p>Honey, it is time to spin<br>Boy, you're so crazy, baby<br>I love you forever, not maybe<br>You are my one true love<br>You are my one true love<br>Honey, it is time to spin<br>You are my one true love</p>
+        </div>
+      </div>
+
+      <!-- Slide 11 - Imagen 14 -->
+      <div class="carousel-slide" id="slide-10" style="background: linear-gradient(135deg, #e8d8f5, #d8c8f0);">
+        <div class="slide-text-content">
+          <p>Soy inestable, pero sabes que te amo<br>Días de amor primaveral<br>Nadie me ha querido tan real<br>Eres lo mejor que me ha pasado<br>Y aunque sé que puedo ser insoportable</p>
+        </div>
+      </div>
+
+      <!-- Slide 12 - Imagen 16 -->
+      <div class="carousel-slide" id="slide-11" style="background: linear-gradient(135deg, #b8f0d8, #98e8c8);">
+        <div class="slide-text-content">
+          <p>i don't know where else i can go<br>Over and over...<br>I know it's over<br>and it never really began<br>but in my heart it was so real<br>And she even spoke to me and said<br>If you're so funny,<br>why are you on your own tonight?<br>And if you're so clever<br>why are you on your own tonight?<br>And if you're so very entertaining<br>why are you on your own tonight?</p>
+        </div>
+      </div>
+
+      <!-- Slide 13 - Imagen 17 -->
+      <div class="carousel-slide" id="slide-12" style="background: linear-gradient(135deg, #ffd4b3, #ffc5a0);">
+        <div class="slide-text-content">
+          <p>Desde que te vi<br>Siento una cosa rara en el cuerpo<br>Creo que se llama amor<br>Usualmente, no me gusta la gente<br>Que se mete en mis sueños<br>Por las noches<br>Pero vos<br>Sos una novedad</p>
+        </div>
+      </div>
+
+      <!-- Slide 14 - Imagen 18 -->
+      <div class="carousel-slide" id="slide-13" style="background: linear-gradient(135deg, #f0c8e8, #e8b3e0);">
+        <div class="slide-text-content">
+          <p>Si te miento voy a aceptar mi castigo<br>Sin tu amor no viviré<br>Solo dame lo que eres, te lo pido<br>Sentimientos innegables han crecido<br>Sin tu amor yo perderé<br>Enredado en tu calor<br>Yo la luna, y tú mi sol</p>
+        </div>
+      </div>
+
+      <!-- Slide 15 - Imagen 20 -->
+      <div class="carousel-slide" id="slide-14" style="background: linear-gradient(135deg, #d8f5f0, #b8f0e8);">
+        <div class="slide-text-content">
+          <p>Are you into me, like I'm into you?<br>Do you wanna do the things I wanna do with you?<br>You're so close, and yet so far<br>I wonder how you look when you're in the dark<br>You're just one click away<br>Click away, click away</p>
+        </div>
+      </div>
+
+      <!-- Slide 16 - Imagen 21 -->
+      <div class="carousel-slide" id="slide-15" style="background: linear-gradient(135deg, #f5c8d8, #f0b3c8);">
+        <div class="slide-text-content">
+          <p>For I will hold them for you<br>Cause all I ever wanted is here<br>All I ever wanted<br>All I want is<br>Always you<br>It's always you<br>And we're not out of the tunnel<br>I bet you thought there's an end<br>Stay with me<br>Hold my hand</p>
+        </div>
+      </div>
+
+      <!-- Slide 17 - Imagen 22 -->
+      <div class="carousel-slide" id="slide-16" style="background: linear-gradient(135deg, #c8f5e8, #a8f0d8);">
+        <div class="slide-text-content">
+          <p>I heard you're the plug, can I be the circuit?<br>When you're around, my insides turn inverted<br>My blood starts to rush when I see you, doorman<br>I know you're nearby and I know your purpose<br>Take one look at you, you're heaven's incarnate<br>What is this spell, baby? Please show some mercy<br>Melting like an ice cream when you smile</p>
+        </div>
+      </div>
+
+      <!-- Slide 18 - Imagen 23 -->
+      <div class="carousel-slide" id="slide-17" style="background: linear-gradient(135deg, #f0d8f5, #e8c8f0);">
+        <div class="slide-text-content">
+          <p>The night we met, I knew I needed you so<br>And if I had the chance, I'd never let you go<br>So won't you say you love me?<br>I'll make you so proud of me<br>We'll make 'em turn their heads every place we go<br>So won't you please (be my, be my baby)<br>Be my little baby? (My one and only baby)<br>Say you'll be my darlin' (be my, be my baby)<br>Be my baby now (my one and only baby)</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="carousel-controls">
+    <button class="carousel-btn" id="prevBtn">&#8592;</button>
+    <div class="carousel-dots" id="dotsContainer"></div>
+    <button class="carousel-btn" id="nextBtn">&#8594;</button>
+  </div>
+
+  <div class="upload-hint">
+    <p>
+      💌 <strong>Son de las canciones preciosas que me dedicaste corazon:>
+    </p>
+  </div>
+</section>
+
+<!-- Divider -->
+<div class="divider">
+  <div class="divider-line"></div>
+  <span class="divider-icon">🌸</span>
+  <div class="divider-line"></div>
+</div>
+
+<!-- ===== CONTENT SECTIONS ===== -->
+<div class="sections-container">
+
+  <!-- Card 1: Love Letter -->
+  <div class="content-card card-rose">
+    <div class="card-header">
+      <div class="card-icon icon-rose">💌</div>
+      <div>
+        <div class="card-title">Something for u</div>
+        <div class="card-subtitle">Te quise escribir algo directamente con mi corazon✍️</div>
+      </div>
+    </div>
+    <textarea class="edit-field"
+      placeholder="Lottie, eres la cosa mas bella que me pudo haber ocurrido, fuiste y eres el mejor inicio de año que haya tenido, es increiblelo mucho que me gustas, el como me hace feliz las cosas que dices. Que llegaras a mi vida es algo que aun no entiendo, fue tan random y no me arrepiento de nada. Se que llevamos poco hablando pero realmente estoy dispuesto a conocerte mil veces mas, de verdad que hablar contigo para mi es sinonimo de estar sonriendole al movil o a la pantalla del pc como baboso de lo mucho que me encantas🌸"
+      rows="6"></textarea>
+  </div>
+
+  <!-- Card 2: Playlist with Lyrics -->
+  <div class="content-card card-peach music-card card-full-width">
+    <div class="card-header">
+      <div class="card-icon icon-peach">🎵</div>
+      <div>
+        <div class="card-title">Un par de canciones que te quiero dedicar:> (ya se que no esta bien sincronizado vale, fue mu duro y esto tiene ya 2000 lineas de codigoDx)</div>
+        <div class="card-subtitle">LOVIUUU</div>
+      </div>
+    </div>
+    
+    <!-- Song Controls -->
+    <div class="lyrics-controls">
+      <div class="song-control">
+        <button class="lyrics-btn lyrics-btn-song" onclick="playLyrics(0)">Nothing's Gonna Hurt You Baby</button>
+        <button class="play-btn" id="playBtn-0" onclick="togglePlayButton(0)" disabled>▶</button>
+      </div>
+      <div class="song-control">
+        <button class="lyrics-btn lyrics-btn-song" onclick="playLyrics(1)">My Kind Of Woman</button>
+        <button class="play-btn" id="playBtn-1" onclick="togglePlayButton(1)" disabled>▶</button>
+      </div>
+      <div class="song-control">
+        <button class="lyrics-btn lyrics-btn-song" onclick="playLyrics(2)">San Lucas</button>
+        <button class="play-btn" id="playBtn-2" onclick="togglePlayButton(2)" disabled>▶</button>
+      </div>
+    </div>
+
+    <!-- Lyrics Display -->
+    <div class="lyrics-display" id="lyricsDisplay">
+      <div class="lyrics-placeholder">✨ TE AMO LOCAMENTEs ✨</div>
+    </div>
+
+    <!-- Hidden Audio Elements -->
+    <audio id="audio-0" class="song-audio">
+      <source src="./Nothing's Gonna Hurt You Baby - Cigarettes After Sex.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="audio-1" class="song-audio">
+      <source src="./Mac DeMarco  My Kind Of Woman.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="audio-2" class="song-audio">
+      <source src="./Kevin Kaarl - San Lucas (Video oficial).mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <!-- Card 5: Love confession — full width -->
+  <div class="content-card card-rose card-full-width card-full">
+    <div class="card-header">
+      <div class="card-icon icon-rose">💌</div>
+      <div>
+        <div class="card-title">Desde el fondo de mi corazón</div>
+      </div>
+    </div>
+    <textarea class="edit-field" placeholder="Texto" rows="12">Tú llegaste sin aviso, como un rayo que irrumpe de repente y, en vez de asustar, ilumina todo lo que toca. Desde entonces empecé a notar algo distinto en mí un fuego que no para de arder en lo mas profundo de mi. Fue ahí cuando entendí que tu presencia estaba cambiando la forma en que vivo mis días, le dabas un proposito y una meta, estar con vos.
+
+Me gustas de una manera que la palabra "gustar" no alcanza a explicar. Es como si hubieras abierto una parte de mí que siempre estuvo ahí, pero que nadie había tocado antes. Ahora que la conozco, no quiero perderla. Tus risas se me quedan dando vueltas en la cabeza, tus silencios se sienten cercanos, y cada cosa que me cuentas por pequeña que sea adquiere importancia porque viene de ti.
+
+Cuando hablamos por horas y horas y el tiempo pasa sin que lo notemos hasta la madrugada, no siento que lo esté desperdiciando. Siento que estoy construyendo algo contigo. Algo que se parece a un hogar, no por tener paredes, sino por la calma que me da. Un espacio que existe en nuestras conversaciones y en esta conexión que se sostiene sola, sin necesidad de explicaciones.
+
+Empiezo a encontrarte en los detalles del día: en una canción que suena de fondo, en el café que sabe mejor cuando pienso en contarte algo después, en la forma en que mi pecho se aligera cuando veo tu nombre aparecer en la pantalla. Son señales de que ya formas parte de mi rutina y de mis pensamientos.
+
+Te amo, Lottie.
+No desde promesas enormes ni planes lejanos. Te amo desde la claridad de quien reconoce algo valioso cuando lo encuentra y decide cuidarlo. Con una intensidad tranquila, pero firme, de quien no piensa soltar lo que sabe que es irremplazable.</textarea>
+  </div>
+
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <span class="footer-heart">♥</span> Hecho con amor para el amor de mi vida · D'Lottie 2026-infinito <span class="footer-heart">♥</span>
+</footer>
+
+<script>
+// ===== FLOATING HEARTS =====
+const heartEmojis = ['♥', '💕', '🌸', '✨', '💗', '🌺', '💖'];
+const container = document.getElementById('heartsContainer');
+
+for (let i = 0; i < 25; i++) {
+  const heart = document.createElement('span');
+  heart.className = 'heart-float';
+  heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.animationDuration = (6 + Math.random() * 10) + 's';
+  heart.style.animationDelay = (Math.random() * 10) + 's';
+  heart.style.fontSize = (0.8 + Math.random() * 1) + 'rem';
+  container.appendChild(heart);
+}
+
+// ===== 3D CAROUSEL =====
+const track = document.getElementById('carouselTrack');
+const slides = document.querySelectorAll('.carousel-slide');
+const dotsContainer = document.getElementById('dotsContainer');
+const total = slides.length;
+let current = 0;
+const radius = 750;
+
+// Create dots
+slides.forEach((_, i) => {
+  const dot = document.createElement('div');
+  dot.className = 'dot' + (i === 0 ? ' active' : '');
+  dot.onclick = () => goTo(i);
+  dotsContainer.appendChild(dot);
+});
+
+function positionSlides(animated = true) {
+  const angleStep = 360 / total;
+  slides.forEach((slide, i) => {
+    const angle = (i - current) * angleStep;
+    const rad = (angle * Math.PI) / 180;
+    const x = Math.sin(rad) * radius;
+    const z = Math.cos(rad) * radius - radius;
+    const scale = (z + radius) / (2 * radius);
+    const opacity = 0.3 + 0.7 * scale;
+    const zIndex = Math.round(scale * 10);
+
+    slide.style.transition = animated ? 'all 0.7s cubic-bezier(0.25,0.1,0.25,1)' : 'none';
+    slide.style.transform = `translate(-50%, -50%) translateX(${x}px) translateZ(${z}px) scale(${0.6 + 0.4 * scale})`;
+    slide.style.opacity = opacity;
+    slide.style.zIndex = zIndex;
+  });
+
+  document.querySelectorAll('.dot').forEach((dot, i) => {
+    dot.classList.toggle('active', i === current);
+  });
+}
+
+function goTo(index) {
+  current = ((index % total) + total) % total;
+  positionSlides();
+}
+
+document.getElementById('prevBtn').onclick = () => goTo(current - 1);
+document.getElementById('nextBtn').onclick = () => goTo(current + 1);
+
+// Auto-play
+setInterval(() => goTo(current + 1), 4000);
+
+// Initial position (no animation)
+positionSlides(false);
+setTimeout(() => positionSlides(true), 100);
+
+// Touch support
+let touchStartX = 0;
+document.getElementById('carousel3D').addEventListener('touchstart', e => {
+  touchStartX = e.touches[0].clientX;
+});
+document.getElementById('carousel3D').addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+});
+
+// ===== CHECKLIST =====
+function toggleCheck(box) {
+  box.classList.toggle('checked');
+  box.textContent = box.classList.contains('checked') ? '✓' : '';
+  const input = box.nextElementSibling;
+  if (input) input.classList.toggle('done', box.classList.contains('checked'));
+}
+
+function addCheckItem() {
+  const list = document.getElementById('checkList');
+  const li = document.createElement('li');
+  li.className = 'checklist-item';
+  li.innerHTML = `<div class="check-box" onclick="toggleCheck(this)"></div>
+    <input class="check-text" type="text" placeholder="Nuevo plan...">`;
+  list.appendChild(li);
+  li.querySelector('input').focus();
+}
+
+function addReason() {
+  const list = document.getElementById('reasonsList');
+  const li = document.createElement('li');
+  li.className = 'checklist-item';
+  li.innerHTML = `<span style="color:var(--soft-red); font-size:0.9rem;">♥</span>
+    <input class="check-text" type="text" placeholder="Otra razón especial...">`;
+  list.appendChild(li);
+  li.querySelector('input').focus();
+}
+
+// ===== SONGS WITH LYRICS - SRT FORMAT =====
+// Formato SRT: cada entrada tiene timestamps (inicio --> fin) y línea de lyrics
+// Los timestamps están en formato HH:MM:SS,mmm (milisegundos con coma)
+
+function timeToSeconds(timeStr) {
+  const parts = timeStr.split(':');
+  const hours = parseInt(parts[0]) || 0;
+  const minutes = parseInt(parts[1]) || 0;
+  const secondsAndMs = parts[2].split(',');
+  const seconds = parseInt(secondsAndMs[0]) || 0;
+  const milliseconds = parseInt(secondsAndMs[1]) || 0;
+  return hours * 3600 + minutes * 60 + seconds + milliseconds / 1000;
+}
+
+const songs = [
+  {
+    title: "Nothing's Gonna Hurt You Baby",
+    artist: "Cigarettes After Sex",
+    srt: [
+      { start: "00:00:21,932", end: "00:00:31,485", text: "Whispered something in your ear" },
+      { start: "00:00:31,485", end: "00:00:41,328", text: "It was a perverted thing to say" },
+      { start: "00:00:41,328", end: "00:00:52,054", text: "But I said it anyway" },
+      { start: "00:00:52,054", end: "00:01:02,356", text: "Made you smile and look away" },
+      { start: "00:01:02,356", end: "00:01:11,809", text: "Nothing's gonna hurt you baby" },
+      { start: "00:01:11,809", end: "00:01:22,125", text: "As long as you're with me you'll be just fine" },
+      { start: "00:01:22,125", end: "00:01:31,836", text: "Nothing's gonna hurt you baby" },
+      { start: "00:01:31,836", end: "00:01:40,983", text: "Nothing's gonna take you from my side" },
+      { start: "00:01:40,983", end: "00:01:49,938", text: "When we dance in my living room" },
+      { start: "00:01:49,938", end: "00:01:59,994", text: "To that silly 90's R&B" },
+      { start: "00:01:59,994", end: "00:02:10,845", text: "When we have a drink or three" },
+      { start: "00:02:10,845", end: "00:02:21,569", text: "Always ends in a hazy shower scene" },
+      { start: "00:02:21,569", end: "00:02:31,571", text: "Nothing's gonna hurt you baby" },
+      { start: "00:02:31,571", end: "00:02:41,519", text: "As long as you're with me you'll be just fine" },
+      { start: "00:02:41,519", end: "00:02:51,598", text: "Nothing's gonna hurt you baby" },
+      { start: "00:02:51,598", end: "00:03:18,697", text: "Nothing's gonna take you from my side" },
+      { start: "00:03:18,697", end: "00:03:28,699", text: "When we're laughing in the microphone and singing" },
+      { start: "00:03:28,699", end: "00:03:38,543", text: "With our sunglasses on to our favorite songs" },
+      { start: "00:03:38,543", end: "00:03:48,030", text: "And we're laughing in the microphone and singing" },
+      { start: "00:03:48,030", end: "00:04:21,226", text: "With our sunglasses on to our favorite songs" },
+      { start: "00:04:21,226", end: "00:04:30,786", text: "Nothing's gonna hurt you baby" },
+      { start: "00:04:30,786", end: "00:04:35,786", text: "Nothing's gonna take you from my side" }
+    ]
+  },
+  {
+    title: "My Kind Of Woman",
+    artist: "Mac DeMarco",
+    srt: [
+      { start: "00:00:06,574", end: "00:00:11,966", text: "Oh, baby" },
+      { start: "00:00:11,966", end: "00:00:17,145", text: "Oh, man" },
+      { start: "00:00:17,145", end: "00:00:23,027", text: "You're making me crazy" },
+      { start: "00:00:23,027", end: "00:00:27,922", text: "Really driving me mad" },
+      { start: "00:00:27,922", end: "00:00:33,328", text: "That's alright with me" },
+      { start: "00:00:33,328", end: "00:00:37,924", text: "It's really no fuss" },
+      { start: "00:00:37,924", end: "00:00:42,896", text: "As long as you're next to me" },
+      { start: "00:00:42,896", end: "00:00:49,420", text: "Just the two of us" },
+      { start: "00:00:49,420", end: "00:00:53,978", text: "You're my, my, my" },
+      { start: "00:00:53,978", end: "00:00:59,979", text: "My kind of woman" },
+      { start: "00:00:59,979", end: "00:01:05,358", text: "My, oh, my" },
+      { start: "00:01:05,358", end: "00:01:10,824", text: "What a girl" },
+      { start: "00:01:10,824", end: "00:01:14,968", text: "You're my, my, my" },
+      { start: "00:01:14,968", end: "00:01:20,939", text: "My kind of woman" },
+      { start: "00:01:20,939", end: "00:01:24,221", text: "And I'm down on my hands and knees" },
+      { start: "00:01:24,221", end: "00:01:26,269", text: "Begging you please, baby" },
+      { start: "00:01:26,269", end: "00:01:36,167", text: "Show me your world" },
+      { start: "00:01:36,167", end: "00:01:40,845", text: "Oh, brother" },
+      { start: "00:01:40,845", end: "00:01:45,890", text: "Sweetheart" },
+      { start: "00:01:45,890", end: "00:01:51,097", text: "I'm feeling so tired" },
+      { start: "00:01:51,097", end: "00:01:56,486", text: "Really falling apart" },
+      { start: "00:01:56,486", end: "00:02:01,585", text: "And it just don't make sense to me" },
+      { start: "00:02:01,585", end: "00:02:06,762", text: "I really don't know" },
+      { start: "00:02:06,762", end: "00:02:12,196", text: "Why you stick right next to me" },
+      { start: "00:02:12,196", end: "00:02:18,608", text: "Wherever I go" },
+      { start: "00:02:18,608", end: "00:02:22,963", text: "You're my, my, my" },
+      { start: "00:02:22,963", end: "00:02:29,248", text: "My kind of woman" },
+      { start: "00:02:29,248", end: "00:02:33,819", text: "My, oh, my" },
+      { start: "00:02:33,819", end: "00:02:39,339", text: "What a girl" },
+      { start: "00:02:39,339", end: "00:02:43,953", text: "You're my, my, my" },
+      { start: "00:02:43,953", end: "00:02:49,827", text: "My kind of woman" },
+      { start: "00:02:49,827", end: "00:02:53,166", text: "And I'm down on my hands and knees" },
+      { start: "00:02:53,166", end: "00:02:55,253", text: "Begging you please, baby" },
+      { start: "00:02:55,253", end: "00:03:00,253", text: "Show me your world" }
+    ]
+  },
+  {
+    title: "San Lucas",
+    artist: "Kevin Kaarl",
+    srt: [
+      { start: "00:00:23,130", end: "00:00:28,043", text: "Dile ya a tus papás que no vas a regresar" },
+      { start: "00:00:28,043", end: "00:00:33,060", text: "Te vas con un loco que no te para de amar" },
+      { start: "00:00:33,060", end: "00:00:38,572", text: "A vivir salvajes, libres, libres allá en San Lucas" },
+      { start: "00:00:38,572", end: "00:00:43,833", text: "Tus ojos brillan más que la luna, sol y mar" },
+      { start: "00:00:43,833", end: "00:00:49,395", text: "Quiero desnudar tu alma y dedicarle una canción" },
+      { start: "00:00:49,395", end: "00:00:55,860", text: "Darle todo mi cariño y entregarle mi amor" },
+      { start: "00:00:55,860", end: "00:01:00,967", text: "Oh-oh, oh-oh" },
+      { start: "00:01:00,967", end: "00:01:04,448", text: "Oh-oh-oh" },
+      { start: "00:01:04,448", end: "00:01:11,499", text: "Qué bonito tu vestido blanco" },
+      { start: "00:01:11,499", end: "00:01:15,271", text: "Que ya baila, que ya baila con el campo" },
+      { start: "00:01:15,271", end: "00:01:20,516", text: "Mira, mira, corazón, olvida el miedo que hay en ti" },
+      { start: "00:01:20,516", end: "00:01:25,782", text: "Pues que deja de sufrir, todo aquello ya pasó" },
+      { start: "00:01:25,782", end: "00:01:30,827", text: "Grita y ponte ya a vivir, que todo va a salir mejor" },
+      { start: "00:01:30,827", end: "00:01:36,465", text: "Si escapas de vivir allá, llorando siempre en tu habitación" },
+      { start: "00:01:36,465", end: "00:01:41,371", text: "Dile ya a tus papás que no vas a regresar" },
+      { start: "00:01:41,371", end: "00:01:46,906", text: "Te vas con un loco que no te para de amar" },
+      { start: "00:01:46,906", end: "00:01:52,105", text: "A vivir salvajes, libres, libres allá en San Lucas" },
+      { start: "00:01:52,105", end: "00:02:28,752", text: "Tus ojos brillan más que la luna, sol y mar" },
+      { start: "00:02:28,752", end: "00:02:39,088", text: "Desnudar tu alma y dedicarle una canción" },
+      { start: "00:02:39,088", end: "00:02:50,583", text: "Desnudar tu alma y dedicarle una canción" },
+      { start: "00:02:50,583", end: "00:03:00,135", text: "Que toda tu mirada me demuestre tu amor" },
+      { start: "00:03:00,135", end: "00:03:41,096", text: "Desnudar tu alma y dedicarle una canción" },
+      { start: "00:03:41,096", end: "00:03:50,397", text: "Ra, ra-ra, ra-ra, ra-ra" },
+      { start: "00:03:50,397", end: "00:03:55,397", text: "Ra-ra, ra-ra, ra-ra" }
+    ]
+  }
+];
+
+let currentSongIndex = -1;
+let currentVerseIndex = 0;
+let verseUpdateIntervalId = null;
+
+function playLyrics(index) {
+  // Detener la canción anterior si hay una en reproducción
+  if (currentSongIndex !== -1 && currentSongIndex !== index) {
+    document.querySelectorAll('.song-audio').forEach((audio, i) => {
+      if (audio.playing || !audio.paused) {
+        audio.pause();
+      }
+    });
+  }
+  
+  // Limpiar intervalo anterior
+  if (verseUpdateIntervalId) {
+    clearInterval(verseUpdateIntervalId);
+    verseUpdateIntervalId = null;
+  }
+  
+  currentSongIndex = index;
+  currentVerseIndex = 0;  // Resetear al primer SRT entry
+  const song = songs[index];
+  const audio = document.getElementById(`audio-${index}`);
+  
+  // Resetear el tiempo del audio a 0
+  audio.currentTime = 0;
+  
+  // Habilitar todos los botones de play de esta canción
+  document.querySelectorAll('.play-btn').forEach((btn, i) => {
+    btn.disabled = (i !== index);
+  });
+  
+  // Actualizar botones de canciones
+  document.querySelectorAll('.lyrics-btn-song').forEach((btn, i) => {
+    btn.classList.toggle('active', i === index);
+  });
+  
+  // Mostrar primer SRT entry
+  displayVerse(index, 0);
+  
+  // Iniciar reproducción
+  setTimeout(() => {
+    playAudio(index);
+  }, 100);
+}
+
+function displayVerse(songIndex, srtIndex) {
+  const song = songs[songIndex];
+  const display = document.getElementById('lyricsDisplay');
+  
+  if (srtIndex < song.srt.length) {
+    const entry = song.srt[srtIndex];
+    const words = entry.text.split(/(\s+)/);
+    const linesHTML = words.map((word, idx) => {
+      if (/\s+/.test(word)) return word;
+      return `<span class="karaoke-word" data-word-index="${idx}">${word}</span>`;
+    }).join('');
+    
+    display.innerHTML = `
+      <div class="lyrics-content">
+        <div>${linesHTML}</div>
+        <div class="lyrics-artist">— ${song.artist}</div>
+      </div>
+    `;
+  }
+}
+
+function togglePlayButton(index) {
+  if (index !== currentSongIndex) {
+    playLyrics(index);
+  } else {
+    const audio = document.getElementById(`audio-${index}`);
+    if (audio.paused) {
+      playAudio(index);
+    } else {
+      pauseAudio(index);
+    }
+  }
+}
+
+function playAudio(index) {
+  const audio = document.getElementById(`audio-${index}`);
+  const playBtn = document.getElementById(`playBtn-${index}`);
+  
+  // Pausa todos los demás
+  document.querySelectorAll('.song-audio').forEach((other, i) => {
+    if (i !== index) {
+      other.pause();
+      document.getElementById(`playBtn-${i}`).textContent = '▶';
+    }
+  });
+  
+  // Resetear tiempo al inicio justo antes de reproducir
+  audio.currentTime = 0;
+  audio.play();
+  playBtn.textContent = '⏸';
+  updateVerseProgress(index);
+}
+
+function pauseAudio(index) {
+  const audio = document.getElementById(`audio-${index}`);
+  const playBtn = document.getElementById(`playBtn-${index}`);
+  
+  audio.pause();
+  playBtn.textContent = '▶';
+  
+  if (verseUpdateIntervalId) {
+    clearInterval(verseUpdateIntervalId);
+    verseUpdateIntervalId = null;
+  }
+}
+
+function updateVerseProgress(index) {
+  const song = songs[index];
+  const audio = document.getElementById(`audio-${index}`);
+  
+  if (verseUpdateIntervalId) {
+    clearInterval(verseUpdateIntervalId);
+    verseUpdateIntervalId = null;
+  }
+  
+  verseUpdateIntervalId = setInterval(() => {
+    // Si esta no es la canción actual, cancelar
+    if (index !== currentSongIndex || audio.paused || audio.ended) {
+      clearInterval(verseUpdateIntervalId);
+      verseUpdateIntervalId = null;
+      
+      if (audio.ended) {
+        document.getElementById('lyricsDisplay').innerHTML = `
+          <div class="lyrics-placeholder">✨ TE AMO LOCAMENTE ✨</div>
+        `;
+        document.getElementById(`playBtn-${index}`).textContent = '▶';
+        currentSongIndex = -1;
+      }
+      return;
+    }
+    
+    const currentTime = audio.currentTime;
+    
+    // Encontrar qué SRT entry está activo ahora
+    let currentSrtIdx = 0;
+    for (let i = 0; i < song.srt.length; i++) {
+      const startTime = timeToSeconds(song.srt[i].start);
+      const endTime = timeToSeconds(song.srt[i].end);
+      
+      if (currentTime >= startTime && currentTime < endTime) {
+        currentSrtIdx = i;
+        break;
+      }
+    }
+    
+    // Cambiar SRT entry si es necesario
+    if (currentSrtIdx !== currentVerseIndex) {
+      currentVerseIndex = currentSrtIdx;
+      displayVerse(index, currentSrtIdx);
+    }
+    
+    // Resaltar palabras basado en el tiempo dentro de este SRT entry
+    const lyricsContent = document.querySelector('.lyrics-content');
+    if (lyricsContent) {
+      const wordElements = lyricsContent.querySelectorAll('.karaoke-word');
+      const srtEntry = song.srt[currentSrtIdx];
+      
+      if (srtEntry) {
+        const startTime = timeToSeconds(srtEntry.start);
+        const endTime = timeToSeconds(srtEntry.end);
+        const duration = endTime - startTime;
+        const timeInEntry = currentTime - startTime ; // Restar 0.8s para sincronizar
+        
+        // Calcular duración por palabra
+        const durationPerWord = duration / wordElements.length;
+        
+        // Resaltar palabras basado en su tiempo específico
+        wordElements.forEach((word, idx) => {
+          const wordStartTime = idx * durationPerWord;
+          const wordEndTime = (idx + 1) * durationPerWord;
+          
+          if (timeInEntry >= wordStartTime && timeInEntry < wordEndTime) {
+            word.classList.add('sung');
+          } else if (timeInEntry >= wordEndTime) {
+            word.classList.add('sung');
+          } else {
+            word.classList.remove('sung');
+          }
+        });
+      }
+    }
+  }, 50);
+}
+
+// Eventos de audio
+document.querySelectorAll('.song-audio').forEach((audio, index) => {
+  audio.addEventListener('play', function() {
+    updateVerseProgress(index);
+  });
+  
+  audio.addEventListener('pause', function() {
+    if (verseUpdateIntervalId) {
+      clearInterval(verseUpdateIntervalId);
+      verseUpdateIntervalId = null;
+    }
+  });
+  
+  audio.addEventListener('ended', function() {
+    document.getElementById('lyricsDisplay').innerHTML = `
+      <div class="lyrics-placeholder">✨ TE AMO LOCAMENTE ✨</div>
+    `;
+    document.getElementById(`playBtn-${index}`).textContent = '▶';
+    currentSongIndex = -1;
+  });
+});
+</script>
+</body>
+</html>
